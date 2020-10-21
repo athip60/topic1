@@ -9,9 +9,11 @@ import { HomeService } from '../service/home.service';
 export class HomeComponent implements OnInit {
   students: any;
   studentAdd = {
-    // 'sid': null,
-    'title': '',
-    'description': ''
+    'sid': null,
+    'first': '',
+    'last': ''
+    // 'title': '',
+    // 'description': ''
   }
   constructor(private homeService: HomeService) { }
 
@@ -28,5 +30,10 @@ export class HomeComponent implements OnInit {
     console.log(this.studentAdd);
     this.fetchData();
     this.homeService.postStudents(this.studentAdd).subscribe((response: {}) => alert('บันทึกเรียบร้อย'));
+  }
+  deleteData(data: any) {
+    console.log(data);
+    this.homeService.deleteStudents(data).subscribe((response: {}) => alert('ลบเรียบร้อย'));
+    this.fetchData();
   }
 }

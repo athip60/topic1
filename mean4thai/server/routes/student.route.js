@@ -8,9 +8,10 @@ module.exports = router;
 //router.use(passport.authenticate('jwt', { session: false }))
 
 router.route('/').post(asyncHandler(insert));
-router.route('/get/:sid(\d+)').get(asyncHandler(get));
+router.route('/get/:_id').get(asyncHandler(get));
 router.route('/all').get(asyncHandler(getAll));
 router.route('/search').get(asyncHandler(search));
+router.route('/delete/:_id').delete(asyncHandler(deleteData));
 
 
 async function insert(req, res) {
@@ -19,7 +20,7 @@ async function insert(req, res) {
 }
 
 async function get(req, res) {
-  let all_students = await studentCtrl.get(req.params['title']);
+  let all_students = await studentCtrl.get(req.params['_id']);
   res.json(all_students);
 }
 
@@ -31,5 +32,10 @@ async function getAll(req, res) {
 async function search(req, res) {
   let result = await studentCtrl.search(req.params['key'], req.params['value']);
   res.json(result);
+}
+
+async function deleteData(req, res) {
+  let all_students = await studentCtrl.deleteData(req.params['_id']);
+  res.json(all_students);
 }
 

@@ -20,7 +20,10 @@ export class HomeService {
   getStudents(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/all`);
   }
-  postStudents(data): Observable<any> {
+  postStudents(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}`, JSON.stringify(data), this.httpOptions);
+  }
+  deleteStudents(data: any): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/delete/${data}`, this.httpOptions);
   }
 }

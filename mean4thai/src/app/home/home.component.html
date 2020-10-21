@@ -5,7 +5,7 @@
   <form>
     <div class="example-container">
       <p>
-        <!-- <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>รหัสนักศึกษา</mat-label>
           <input
             matInput
@@ -14,17 +14,17 @@
             type="number"
             [(ngModel)]="studentAdd.sid"
           />
-        </mat-form-field> -->
+        </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>ชื่อ</mat-label>
           <input
             matInput
             placeholder="Placeholder"
-            name="title"
-            [(ngModel)]="studentAdd.title"
+            name="first"
+            [(ngModel)]="studentAdd.first"
           />
         </mat-form-field>
-        <!-- <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-label>นามสกุล</mat-label>
           <input
             matInput
@@ -32,8 +32,8 @@
             name="last"
             [(ngModel)]="studentAdd.last"
           />
-        </mat-form-field> -->
-        <mat-form-field appearance="outline">
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
           <mat-label>เนื้อหา</mat-label>
           <textarea
             rows="10"
@@ -42,7 +42,7 @@
             name="description"
             [(ngModel)]="studentAdd.description"
           ></textarea>
-        </mat-form-field>
+        </mat-form-field> -->
       </p>
     </div>
     <button mat-raised-button (click)="submitReviewAdd()" color="primary">บันทึก</button>
@@ -60,17 +60,17 @@
       <th colspan="2">ลบ / แก้ไข</th>
     </tr>
     <tr *ngFor="let student of students">
-      <td>{{ student._id }}</td>
-      <td>{{ student.title }}</td>
-      <td>{{ student.description }}</td>
+      <td>{{ student.sid }}</td>
+      <td>{{ student.first }}</td>
+      <td>{{ student.last }}</td>
       <td>
         <button mat-raised-button style="background-color: #ffa000">
           แก้ไข
         </button>
       </td>
       <td>
-        <a role="button" mat-raised-button style="background-color: #d32f2f">ลบ</a>
-        <!-- <a role="button" mat-raised-button (click)="deleteStudent(student._id)" style="background-color: #d32f2f">ลบ</a> -->
+        <!-- <a role="button" mat-raised-button style="background-color: #d32f2f">ลบ</a> -->
+        <a role="button" mat-raised-button (click)="deleteData(student._id)" style="background-color: #d32f2f">ลบ</a>
       </td>
     </tr>
   </table>

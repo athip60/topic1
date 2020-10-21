@@ -1,31 +1,29 @@
-const Joi = require('joi');
-const Student = require('../models/student.model');
+const Joi = require("joi");
+const Student = require("../models/student.model");
 
 const studentSchema = Joi.object({
-  // sid: Joi.number().integer().required(),
-  title: Joi.string().required(),
-  description: Joi.string().required()
-})
-
+  sid: Joi.number().integer().required(),
+  first: Joi.string().required(),
+  last: Joi.string().required(),
+});
 
 module.exports = {
   insert,
   get,
   getAll,
   search,
-}
+  deleteData
+};
 
 async function insert(student) {
   student = await Joi.validate(student, studentSchema, { abortEarly: false });
   return await new Student(student).save();
 }
-
 /**
  * อ่านเพิ่มเติม https://mongoosejs.com/docs/api.html
  */
-async function get(sid) {
-  return await Student.find({title: title});
-  // return await Student.find({sid: sid});
+async function get(_id) {
+  return await Student.find({ _id: _id });
 }
 
 async function getAll() {
@@ -38,3 +36,6 @@ async function search(key, value) {
   return await Student.find(query);
 }
 
+async function deleteData(_id) {
+  return await Student.findByIdAndDelete(_id)
+}
