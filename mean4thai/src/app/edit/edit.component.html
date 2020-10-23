@@ -1,0 +1,66 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <h3>บันทึกข้อมูล</h3>
+  </mat-card-header>
+  <form>
+    <div class="example-container">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>หมวดหมู่หนัง</mat-label>
+          <mat-select [(ngModel)]="data.catagory" name="catagory">
+            <mat-option
+              value="option"
+              *ngFor="let catagory of catagorys"
+              [value]="catagory.type"
+              >{{ catagory.type }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อหนัง</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            name="namemovie"
+            [(ngModel)]="data.namemovie"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>หัวข้อ</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            name="title"
+            [(ngModel)]="data.title"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>คำอธิบาย</mat-label>
+          <textarea
+            rows="10"
+            matInput
+            placeholder="Placeholder"
+            name="description"
+            [(ngModel)]="data.description"
+          ></textarea>
+        </mat-form-field>
+      </p>
+    </div>
+    <button
+      mat-raised-button
+      (click)="submitUpdate()"
+      color="primary"
+      *ngIf="data.catagory && data.namemovie && data.title && data.description"
+    >
+      บันทึก
+    </button>
+    {{ data | json }}
+  </form>
+</mat-card>
+<br />
+<br />
+<br />
+<br />

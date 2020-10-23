@@ -1,0 +1,49 @@
+<div style="padding-left: 20%; padding-right: 20%; padding-bottom: 10%">
+  <h1>ข้อมูล</h1>
+  <table>
+    <tr>
+      <th>หมวดหมู่</th>
+      <th>ชื่อหนัง</th>
+      <th>ชื่อบทความ</th>
+      <th>เนื้อหา</th>
+      <th colspan="2"></th>
+    </tr>
+    <tr *ngFor="let review of reviews">
+      <td>{{ review.catagory }}</td>
+      <td>{{ review.namemovie }}</td>
+      <td>{{ review.title }}</td>
+      <td>{{ review.description }}</td>
+      <td>
+        <div>
+          <button
+            mat-raised-button
+            [routerLink]="['/viewdata', review._id]"
+            style="background-color: #1cbe3f"
+          >
+            ดูข้อมูล
+          </button>
+        </div>
+      </td>
+      <td>
+        <button
+          *ngIf="user_data._id == review.user_id"
+          mat-raised-button
+          [routerLink]="['/edit', review._id]"
+          style="background-color: #ffa000"
+        >
+          แก้ไข
+        </button>
+      </td>
+      <td>
+        <a
+          role="button"
+          *ngIf="user_data._id == review.user_id"
+          mat-raised-button
+          (click)="deleteData(review._id)"
+          style="background-color: #d32f2f"
+          >ลบ</a
+        >
+      </td>
+    </tr>
+  </table>
+</div>

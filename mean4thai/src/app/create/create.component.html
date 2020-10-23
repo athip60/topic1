@@ -1,0 +1,71 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <h3>บันทึกข้อมูล</h3>
+  </mat-card-header>
+  <form>
+    <div class="example-container">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>หมวดหมู่หนัง</mat-label>
+          <mat-select [(ngModel)]="reviewAdd.catagory" name="catagory">
+            <mat-option
+              value="option"
+              *ngFor="let catagory of catagorys"
+              [value]="catagory.type"
+              >{{ catagory.type }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>ชื่อหนัง</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            name="namemovie"
+            [(ngModel)]="reviewAdd.namemovie"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>หัวข้อ</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            name="title"
+            [(ngModel)]="reviewAdd.title"
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>คำอธิบาย</mat-label>
+          <textarea
+            rows="10"
+            matInput
+            placeholder="Placeholder"
+            name="description"
+            [(ngModel)]="reviewAdd.description"
+          ></textarea>
+        </mat-form-field>
+      </p>
+    </div>
+    <button
+      mat-raised-button
+      (click)="submitReviewAdd()"
+      color="primary"
+      *ngIf="
+        reviewAdd.catagory &&
+        reviewAdd.namemovie &&
+        reviewAdd.title &&
+        reviewAdd.description
+      "
+    >
+      บันทึก
+    </button>
+    {{ reviewAdd | json }}
+  </form>
+</mat-card>
+<br />
+<br />
+<br />
+<br />
